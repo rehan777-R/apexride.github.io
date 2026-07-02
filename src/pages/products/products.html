@@ -71,6 +71,16 @@
   <section class="pb-16 flex-1">
     <div class="max-w-7xl mx-auto px-6">
       
+      <div class="mb-4 bg-gradient-to-r from-indigo-600 to-blue-600 p-4 rounded-xl shadow-sm flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+        <div class="text-white text-xl px-1">🤖</div>
+        <input type="text" id="aiSearchInput" placeholder='Try: "cheap engine parts under $200 with good rating"'
+          class="flex-1 border-0 rounded-lg px-4 py-2 focus:ring-2 focus:ring-white outline-none text-black bg-white text-sm">
+        <button id="aiSearchBtn" class="bg-white text-indigo-700 px-5 py-2 rounded-lg font-semibold text-sm hover:bg-indigo-50 transition whitespace-nowrap">
+          Ask AI
+        </button>
+      </div>
+      <div id="aiSearchStatus" class="mb-6 text-sm hidden"></div>
+
       <div class="mb-8 bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col lg:flex-row gap-4 flex-wrap transition-colors duration-300 card-bg">
         
         <div class="flex-1 min-w-[200px]">
@@ -242,5 +252,6 @@
 
   <script type="module" src="./products-logic.js"></script>
   <script src="../../constants/themeconstants.js"></script>
+  <script src="./ai-search.js"></script>
 </body>
 </html>
