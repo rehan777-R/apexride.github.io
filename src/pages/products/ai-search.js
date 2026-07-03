@@ -1,7 +1,7 @@
 // ==========================================
 // AI-POWERED NATURAL LANGUAGE PRODUCT SEARCH
 // ==========================================
-const AI_STORAGE_KEY = 'apexride_openai_key';
+const AI_STORAGE_KEY = 'apexride_groq_key';
 
 function getApiKey() {
     return localStorage.getItem(AI_STORAGE_KEY);
@@ -9,9 +9,9 @@ function getApiKey() {
 
 function promptForApiKey() {
     const key = prompt(
-        "This demo calls the OpenAI API directly from the browser using your own API key.\n" +
-        "The key is stored only in this browser's localStorage — it is never sent anywhere except OpenAI.\n\n" +
-        "Enter your OpenAI API key:"
+        "This demo calls the Groq API directly from the browser using your own free API key.\n" +
+        "The key is stored only in this browser's localStorage — it is never sent anywhere except Groq.\n\n" +
+        "Enter your Groq API key (get one free at console.groq.com):"
     );
     if (key && key.trim()) {
         localStorage.setItem(AI_STORAGE_KEY, key.trim());
@@ -48,14 +48,14 @@ Rules:
 - Never invent a maxPrice or minRating that wasn't implied by the query.`;
 
 async function interpretQuery(query, apiKey) {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-            model: "gpt-4o-mini",
+            model: "llama-3.3-70b-versatile",
             temperature: 0,
             messages: [
                 { role: "system", content: SYSTEM_PROMPT },
