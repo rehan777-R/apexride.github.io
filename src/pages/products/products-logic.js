@@ -2,11 +2,52 @@
 // 1. INITIAL DATA (Array of Objects) [cite: 13, 36]
 // ==========================================
 let products = [
+    // ---------------- ENGINE ----------------
     { id: "PRD-101", name: "Turbo Boost Kit V2", category: "Engine", price: 350, rating: 4.8, description: "High performance turbo kit for extra horsepower." },
-    { id: "PRD-102", name: "LED Headlights Pro", category: "Lighting", price: 120, rating: 4.5, description: "Ultra bright LED conversion kit." },
-    { id: "PRD-103", name: "Carbon Fiber Spoiler", category: "Body", price: 299, rating: 4.2, description: "Aerodynamic lightweight rear spoiler." },
-    { id: "PRD-104", name: "Ceramic Brake Pads", category: "Brakes", price: 85, rating: 3.9, description: "Low dust, noise-free stopping power." },
-    { id: "PRD-105", name: "Sport Exhaust System", category: "Exhaust", price: 450, rating: 4.9, description: "Deep aggressive sound with better flow." },
+    { id: "PRD-102", name: "Cold Air Intake System", category: "Engine", price: 210, rating: 4.6, description: "Increases airflow for better throttle response." },
+    { id: "PRD-103", name: "ECU Performance Chip", category: "Engine", price: 180, rating: 4.4, description: "Remaps engine parameters for optimized power." },
+    { id: "PRD-104", name: "Supercharger Pulley Kit", category: "Engine", price: 620, rating: 4.7, description: "Boosts supercharger RPM for more horsepower." },
+    { id: "PRD-105", name: "High-Flow Fuel Injectors", category: "Engine", price: 340, rating: 4.5, description: "Precision injectors for consistent fueling." },
+    { id: "PRD-106", name: "Performance Radiator", category: "Engine", price: 275, rating: 4.6, description: "Aluminum radiator with improved cooling." },
+    { id: "PRD-107", name: "Racing Spark Plug Set", category: "Engine", price: 65, rating: 4.3, description: "Iridium spark plugs for efficient combustion." },
+
+    // ---------------- EXHAUST ----------------
+    { id: "PRD-201", name: "Sport Exhaust System", category: "Exhaust", price: 450, rating: 4.9, description: "Deep aggressive sound with better flow." },
+    { id: "PRD-202", name: "Cat-Back Exhaust Kit", category: "Exhaust", price: 480, rating: 4.7, description: "Full cat-back setup for improved flow." },
+    { id: "PRD-203", name: "Titanium Muffler", category: "Exhaust", price: 390, rating: 4.8, description: "Lightweight titanium muffler, deep tone." },
+    { id: "PRD-204", name: "Dual Exhaust Tips", category: "Exhaust", price: 85, rating: 4.2, description: "Chrome dual-tip finish, sportier rear look." },
+    { id: "PRD-205", name: "Headers & Manifold Kit", category: "Exhaust", price: 410, rating: 4.6, description: "Equal-length headers for better scavenging." },
+    { id: "PRD-206", name: "Exhaust Valve Controller", category: "Exhaust", price: 150, rating: 4.4, description: "Electronic valve control, switchable modes." },
+
+    // ---------------- LIGHTING ----------------
+    { id: "PRD-301", name: "LED Headlights Pro", category: "Lighting", price: 120, rating: 4.5, description: "Ultra bright LED conversion kit." },
+    { id: "PRD-302", name: "Underglow LED Kit", category: "Lighting", price: 95, rating: 4.3, description: "App-controlled RGB underglow lighting." },
+    { id: "PRD-303", name: "Sequential Tail Lights", category: "Lighting", price: 220, rating: 4.6, description: "Smooth sequential turn signal tail lights." },
+    { id: "PRD-304", name: "Fog Light Upgrade Kit", category: "Lighting", price: 110, rating: 4.4, description: "High-visibility fog lights for low-light driving." },
+    { id: "PRD-305", name: "Interior Ambient Lighting", category: "Lighting", price: 60, rating: 4.2, description: "Customizable multi-color interior light strips." },
+    { id: "PRD-306", name: "HID Xenon Conversion Kit", category: "Lighting", price: 140, rating: 4.5, description: "Bright xenon output, daylight-white tone." },
+
+    // ---------------- BODY ----------------
+    { id: "PRD-401", name: "Carbon Fiber Spoiler", category: "Body", price: 299, rating: 4.2, description: "Aerodynamic lightweight rear spoiler." },
+    { id: "PRD-402", name: "Carbon Fiber Hood", category: "Body", price: 750, rating: 4.6, description: "Lightweight carbon fiber hood, reduces weight." },
+    { id: "PRD-403", name: "Front Splitter Kit", category: "Body", price: 260, rating: 4.5, description: "Aggressive front splitter improves aero." },
+    { id: "PRD-404", name: "Side Skirt Extensions", category: "Body", price: 190, rating: 4.3, description: "Sleek side skirts, lowers visual stance." },
+    { id: "PRD-405", name: "Widebody Fender Flares", category: "Body", price: 420, rating: 4.6, description: "Bolt-on flares, wider aggressive stance." },
+    { id: "PRD-406", name: "Custom Grille Insert", category: "Body", price: 130, rating: 4.2, description: "Mesh grille insert, sportier front-end look." },
+
+    // ---------------- BRAKES ----------------
+    { id: "PRD-501", name: "Ceramic Brake Pads", category: "Brakes", price: 85, rating: 3.9, description: "Low dust, noise-free stopping power." },
+    { id: "PRD-502", name: "Racing Brake Pads", category: "Brakes", price: 95, rating: 4.9, description: "High-heat racing pads, superior stopping." },
+    { id: "PRD-503", name: "Slotted Brake Rotors", category: "Brakes", price: 220, rating: 4.7, description: "Slotted rotors improve heat dissipation." },
+    { id: "PRD-504", name: "Big Brake Caliper Kit", category: "Brakes", price: 890, rating: 4.8, description: "6-piston caliper upgrade for track days." },
+    { id: "PRD-505", name: "Stainless Brake Lines", category: "Brakes", price: 75, rating: 4.4, description: "Braided steel lines, firmer pedal feel." },
+
+    // ---------------- SUSPENSION ----------------
+    { id: "PRD-601", name: "Coilover Suspension Kit", category: "Suspension", price: 680, rating: 4.8, description: "Fully adjustable coilovers, precise handling." },
+    { id: "PRD-602", name: "Sport Lowering Springs", category: "Suspension", price: 240, rating: 4.5, description: "Lowers center of gravity, sharper handling." },
+    { id: "PRD-603", name: "Adjustable Sway Bar Kit", category: "Suspension", price: 195, rating: 4.4, description: "Reduces body roll, confident cornering." },
+    { id: "PRD-604", name: "Strut Tower Brace", category: "Suspension", price: 130, rating: 4.3, description: "Adds chassis rigidity, precise steering." },
+    { id: "PRD-605", name: "Performance Bushings Set", category: "Suspension", price: 85, rating: 4.2, description: "Polyurethane bushings, tighter response." },
 ];
 
 // ==========================================
