@@ -1,24 +1,9 @@
 // ==========================================
 // AI-POWERED NATURAL LANGUAGE PRODUCT SEARCH
 // ==========================================
-const AI_STORAGE_KEY = 'apexride_groq_key';
-
-function getApiKey() {
-    return localStorage.getItem(AI_STORAGE_KEY);
-}
-
-function promptForApiKey() {
-    const key = prompt(
-        "This demo calls the Groq API directly from the browser using your own free API key.\n" +
-        "The key is stored only in this browser's localStorage — it is never sent anywhere except Groq.\n\n" +
-        "Enter your Groq API key (get one free at console.groq.com):"
-    );
-    if (key && key.trim()) {
-        localStorage.setItem(AI_STORAGE_KEY, key.trim());
-        return key.trim();
-    }
-    return null;
-}
+// Sends the user's free-text query to our own /api/ai-search serverless
+// endpoint, which calls the LLM using a server-side key. No API key is
+// ever needed in the browser — works for any visitor automatically.
 
 function showStatus(message, isError = false) {
     const el = document.getElementById('aiSearchStatus');
@@ -29,52 +14,18 @@ function showStatus(message, isError = false) {
 
 const VALID_CATEGORIES = ["All", "Engine", "Exhaust", "Lighting", "Body", "Brakes", "Suspension"];
 
-const SYSTEM_PROMPT = `You convert a shopper's natural language request about car modification parts into a strict JSON filter object.
-
-Return ONLY a JSON object with these exact keys, no other text:
-{
-  "searchTerm": string,
-  "category": string,
-  "maxPrice": number|null,
-  "minRating": number,
-  "sortBy": string
-}
-
-Rules:
-- "cheap" / "budget" implies sorting priceLowHigh if no explicit max price is given.
-- "good rating" / "highly rated" implies minRating of 4.
-- "best" implies sortBy ratingHighLow.
-- If the user mentions a part type (turbo, brakes, exhaust, lights, spoiler, suspension) infer the closest category.
-- Never invent a maxPrice or minRating that wasn't implied by the query.`;
-
-async function interpretQuery(query, apiKey) {
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+async function interpretQuery(query) {
+    const response = await fetch("/api/ai-search", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
-            temperature: 0,
-            messages: [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: query }
-            ],
-            response_format: { type: "json_object" }
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query })
     });
 
-    if (!response.ok) {
-        const errBody = await response.json().catch(() => ({}));
-        throw new Error(errBody?.error?.message || `OpenAI API error (${response.status})`);
-    }
-
     const data = await response.json();
-    const raw = data.choices?.[0]?.message?.content;
-    if (!raw) throw new Error("Empty response from model");
-
-    return JSON.parse(raw);
+    if (!response.ok) {
+        throw new Error(data?.error || `Server error (${response.status})`);
+    }
+    return data;
 }
 
 function applyAiFilters(filters) {
@@ -104,15 +55,6 @@ async function handleAiSearch() {
     const query = document.getElementById('aiSearchInput').value.trim();
     if (!query) return;
 
-    let apiKey = getApiKey();
-    if (!apiKey) {
-        apiKey = promptForApiKey();
-        if (!apiKey) {
-            showStatus("No API key provided — AI search needs an OpenAI key to run.", true);
-            return;
-        }
-    }
-
     const btn = document.getElementById('aiSearchBtn');
     const originalLabel = btn.innerText;
     btn.disabled = true;
@@ -120,7 +62,7 @@ async function handleAiSearch() {
     showStatus("🤖 Interpreting your request...");
 
     try {
-        const filters = await interpretQuery(query, apiKey);
+        const filters = await interpretQuery(query);
         applyAiFilters(filters);
 
         const parts = [];
@@ -132,9 +74,6 @@ async function handleAiSearch() {
     } catch (err) {
         console.error(err);
         showStatus(`Couldn't process that request: ${err.message}`, true);
-        if (String(err.message).toLowerCase().includes('incorrect api key') || String(err.message).toLowerCase().includes('invalid')) {
-            localStorage.removeItem(AI_STORAGE_KEY);
-        }
     } finally {
         btn.disabled = false;
         btn.innerText = originalLabel;
