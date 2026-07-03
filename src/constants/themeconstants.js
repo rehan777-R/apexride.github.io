@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.classList.add('text-gray-200');
             });
 
+            // Fix: Input/Select/Textarea fields (Full Name, Email, etc.)
+            document.querySelectorAll('input, select, textarea').forEach(el => {
+                el.classList.add('bg-gray-700', 'text-white', 'border-gray-600');
+            });
+
         } else {
             // Light Mode Apply
             body.classList.replace('bg-gray-900', 'bg-slate-100');
@@ -55,6 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     el.classList.remove('text-gray-200');
                     el.classList.add(originalColor);
                 }
+            });
+
+            // Fix: Revert Input/Select/Textarea fields
+            document.querySelectorAll('input, select, textarea').forEach(el => {
+                el.classList.remove('bg-gray-700', 'text-white', 'border-gray-600');
             });
         }
     };
