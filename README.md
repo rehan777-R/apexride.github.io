@@ -2,8 +2,8 @@
 
 ApexRide is a full-featured e-commerce style web application built for car enthusiasts who want to browse, filter, and manage automotive tuning and modification parts. The project started as a university web development assignment and has since been extended with a working AI search feature, a full product catalog, and a polished, responsive interface.
 
-**Live Demo:**(https://apexride-github-io.vercel.app)
-**Repository:**(https://github.com/rehan777-R/apexride.github.io)
+**Live Demo:** https://apexride-github-io.vercel.app
+**Repository:** https://github.com/rehan777-R/apexride.github.io
 
 ---
 
