@@ -55,6 +55,7 @@ The request is sent to a Vercel serverless function, which calls the Groq API (L
 
 ## Project Structure
 
+```
 apexride.github.io/
 ├── index.html                  # Home page
 ├── api/
@@ -72,6 +73,7 @@ apexride.github.io/
 │   │   ├── sign in/signin.html
 │   │   └── sign up/signup.html
 └── assets/                     # Images and other static assets
+```
 
 ---
 
