@@ -2,8 +2,8 @@
 
 ApexRide is a full-featured e-commerce style web application built for car enthusiasts who want to browse, filter, and manage automotive tuning and modification parts. The project started as a university web development assignment and has since been extended with a working AI search feature, a full product catalog, and a polished, responsive interface.
 
-Live Demo: https://apexride-github-io.vercel.app
-Repository: https://github.com/rehan777-R/apexride.github.io
+**Live Demo:** [apexride-github-io.vercel.app](https://apexride-github-io.vercel.app)
+**Repository:** [View on GitHub](https://github.com/rehan777-R/apexride.github.io)
 
 ---
 
@@ -55,25 +55,18 @@ The request is sent to a Vercel serverless function, which calls the Groq API (L
 
 ## Project Structure
 
-```
 apexride.github.io/
-├── index.html                  # Home page
-├── api/
-│   └── ai-search.js            # Serverless function that calls the Groq API
-├── src/
-│   ├── constants/
-│   │   └── themeconstants.js   # Global dark/light theme logic
-│   ├── pages/
-│   │   ├── about/about.html
-│   │   ├── contact/contact.html
-│   │   ├── products/
-│   │   │   ├── products.html
-│   │   │   ├── products-logic.js   # CRUD and filtering logic
-│   │   │   └── ai-search.js        # Frontend AI search logic
-│   │   ├── sign in/signin.html
-│   │   └── sign up/signup.html
-└── assets/                     # Images and other static assets
-```
+- index.html — Home page
+- api/ai-search.js — Serverless function that calls the Groq API
+- src/constants/themeconstants.js — Global dark/light theme logic
+- src/pages/about/about.html
+- src/pages/contact/contact.html
+- src/pages/products/products.html
+- src/pages/products/products-logic.js — CRUD and filtering logic
+- src/pages/products/ai-search.js — Frontend AI search logic
+- src/pages/sign in/signin.html
+- src/pages/sign up/signup.html
+- assets/ — Images and other static assets
 
 ---
 
