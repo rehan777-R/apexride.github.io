@@ -56,17 +56,22 @@ The request is sent to a Vercel serverless function, which calls the Groq API (L
 ## Project Structure
 
 apexride.github.io/
-- index.html — Home page
-- api/ai-search.js — Serverless function that calls the Groq API
-- src/constants/themeconstants.js — Global dark/light theme logic
-- src/pages/about/about.html
-- src/pages/contact/contact.html
-- src/pages/products/products.html
-- src/pages/products/products-logic.js — CRUD and filtering logic
-- src/pages/products/ai-search.js — Frontend AI search logic
-- src/pages/sign in/signin.html
-- src/pages/sign up/signup.html
-- assets/ — Images and other static assets
+├── index.html                  # Home page
+├── api/
+│   └── ai-search.js            # Serverless function that calls the Groq API
+├── src/
+│   ├── constants/
+│   │   └── themeconstants.js   # Global dark/light theme logic
+│   ├── pages/
+│   │   ├── about/about.html
+│   │   ├── contact/contact.html
+│   │   ├── products/
+│   │   │   ├── products.html
+│   │   │   ├── products-logic.js   # CRUD and filtering logic
+│   │   │   └── ai-search.js        # Frontend AI search logic
+│   │   ├── sign in/signin.html
+│   │   └── sign up/signup.html
+└── assets/                     # Images and other static assets
 
 ---
 
