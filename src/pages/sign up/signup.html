@@ -24,8 +24,8 @@
           <a href="../about/about.html" class="text-gray-600 hover:text-blue-600 font-medium text-sm">About</a>
           <a href="../products/products.html" class="text-gray-600 hover:text-blue-600 font-medium text-sm">Products</a>
           <a href="../contact/contact.html" class="text-gray-600 hover:text-blue-600 font-medium text-sm">Contact</a>
-          <a href="../sign in/signin.html" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 text-sm font-medium">Sign In</a>
-          <a href="./signup.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium">Sign Up</a>
+          <a id="navSignIn" href="../sign in/signin.html" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 text-sm font-medium">Sign In</a>
+          <a id="navSignUp" href="./signup.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium">Sign Up</a>
           <button id="themeToggleBtn" class="text-xl p-2 rounded-full hover:bg-gray-100 transition">🌓</button>
         </div>
       </div>
@@ -42,32 +42,53 @@
         <p class="text-gray-500 text-sm mt-1">Join ApexRide today!</p>
       </div>
 
-      <div class="space-y-4">
+      <!-- Error message box -->
+      <div id="authError" class="hidden bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-4 py-2.5 mb-4"></div>
+
+      <form id="signupForm" class="space-y-4">
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-          <input type="text" placeholder="Enter your name"
+          <input id="signupName" type="text" placeholder="Enter your name" required
             class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"/>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-          <input type="email" placeholder="123@example.com"
+          <input id="signupEmail" type="email" placeholder="123@example.com" required
             class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"/>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-          <input type="password" placeholder="Min 8 characters" minlength="8"
+          <input id="signupPassword" type="password" placeholder="Min 8 characters" minlength="8" required
             class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"/>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-          <input type="password" placeholder="Repeat your password"
+          <input id="signupConfirmPassword" type="password" placeholder="Repeat your password" minlength="8" required
             class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"/>
         </div>
-        <button type="submit"
+        <button type="submit" id="signupSubmitBtn"
           class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm transition">
           Create Account
         </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-3 my-6">
+        <div class="flex-1 h-px bg-gray-200"></div>
+        <span class="text-xs text-gray-400">OR</span>
+        <div class="flex-1 h-px bg-gray-200"></div>
       </div>
+
+      <button id="googleSignUpBtn" type="button"
+        class="w-full flex items-center justify-center gap-2 border border-gray-200 hover:bg-gray-50 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition">
+        <svg class="w-4 h-4" viewBox="0 0 48 48">
+          <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.9 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 19.4-8.1 19.4-19.5 0-1.3-.1-2.3-.4-3.5z"/>
+          <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.6 18.9 12 24 12c3.1 0 5.8 1.1 8 3l5.7-5.7C34.6 6.1 29.6 4 24 4c-7.5 0-14 4.1-17.7 10.7z"/>
+          <path fill="#4CAF50" d="M24 44c5.3 0 10.1-1.8 13.9-5.1l-6.4-5.2C29.4 35.4 26.8 36 24 36c-5.4 0-9.9-3.1-11.3-7.9l-6.6 5.1C9.9 39.8 16.4 44 24 44z"/>
+          <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.9 2.6-2.7 4.8-5.1 6.2l6.4 5.2C39.6 36.7 43.4 30.9 43.4 24c0-1.3-.1-2.3-.4-3.5z"/>
+        </svg>
+        Continue with Google
+      </button>
 
       <p class="text-center text-sm text-gray-500 mt-6">
         Already have an account?
@@ -93,6 +114,12 @@
     </div>
     <p class="text-center text-xs mt-6 text-gray-500">© 2026 ApexRide. All rights reserved.</p>
   </footer>
-<script src="../../constants/themeconstants.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="../../constants/firebase-config.js"></script>
+  <script src="../../constants/auth-nav.js"></script>
+  <script src="./signup.js"></script>
+  <script src="../../constants/themeconstants.js"></script>
 </body>
 </html>
