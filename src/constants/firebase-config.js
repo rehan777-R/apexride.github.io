@@ -8,12 +8,12 @@
 // Your apps > SDK setup and configuration).
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-Z4oUyQCsoJiGADsLNVFvLi1_8qlEkRM",
-  authDomain: "apexride-auth.firebaseapp.com",
-  projectId: "apexride-auth",
-  storageBucket: "apexride-auth.firebasestorage.app",
-  messagingSenderId: "369036199754",
-  appId: "1:369036199754:web:a80bb77b5dfcf636d1e3b3"
+  apiKey: "AIzaSyCo1eh6GHyetA-Oaf55yXyWL6mIT5RYHO4",
+  authDomain: "apexride-auth2.firebaseapp.com",
+  projectId: "apexride-auth2",
+  storageBucket: "apexride-auth2.firebasestorage.app",
+  messagingSenderId: "570556728107",
+  appId: "1:570556728107:web:d8b6ae2ca5246fe158fb6e"
 };
 
 // Firebase initialize karna (compat SDK - script tags se load hota hai, no bundler needed)
